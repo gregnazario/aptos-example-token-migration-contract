@@ -1,0 +1,14 @@
+[package]
+name = "RisingPhoenixes"
+version = "1.0.0"
+authors = []
+
+[addresses]
+original_contract = "_" # address of the original contract
+new_contract = "_" # address of the new contract
+
+[dependencies]
+AptosFramework = { git = "https://github.com/aptos-labs/aptos-core.git", rev = "mainnet", subdir = "aptos-move/framework/aptos-framework" }
+AptosTokenObjects = { git = "https://github.com/aptos-labs/aptos-core.git", rev = "mainnet", subdir = "aptos-move/framework/aptos-token-objects" }
+AptosToken = { git = "https://github.com/aptos-labs/aptos-core.git", rev = "mainnet", subdir = "aptos-move/framework/aptos-token" }
+
