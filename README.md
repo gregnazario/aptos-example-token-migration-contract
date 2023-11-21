@@ -1,0 +1,1 @@
+# aptos-example-burn-contract
