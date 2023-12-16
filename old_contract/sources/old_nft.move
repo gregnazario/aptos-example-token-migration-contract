@@ -15,6 +15,10 @@ module original_contract::old_nft {
     const ENOT_CREATOR: u64 = 1;
     /// Not authorized, minting is frozen
     const EMINTING_FROZEN: u64 = 2;
+    /// Not authorized, total mint limit reached
+    const ETOO_MANY_MINTED: u64 = 3;
+    /// Maximum amount of NFTs to be minted
+    const MAX_MINTED: u64 = 10;
 
     const COLLECTION_NAME: vector<u8> = b"Sleepy Crows";
     const COLLECTION_URI: vector<u8> = b"https://www.sleepycrows.com";
@@ -67,6 +71,7 @@ module original_contract::old_nft {
         let collection_resource_address = account::create_resource_address(&@original_contract, COLLECTION_NAME);
         let controller = borrow_global_mut<CollectionController>(collection_resource_address);
         assert!(!controller.freeze_mint, EMINTING_FROZEN);
+        assert!(controller.count < 10, ETOO_MANY_MINTED);
 
         let collection_signer = account::create_signer_with_capability(&controller.signer_cap);
 
